@@ -3,12 +3,12 @@ $(document).ready(function () {
     var counter = 10;
     var correctGuesses = 0;
     var wrongGuesses = 0;
-    var unasnsweredGuesses = 0;
+    var unansweredGuesses = 0;
     var selectedAnswer = 0;
     var questionCounter = 0;
 
 
-    var questions = [
+    /*var questions = [
         {
             question: "what is the capital of Illinois?",
             choice1: "joliet",
@@ -26,6 +26,35 @@ $(document).ready(function () {
             answer: "lansing"
         }
     ]
+*/
+
+    var questionsArray = [
+        "what is the capital of Illinois?",
+        "what is the capital of Michigan?",
+        "what is the capital of indiana?",
+        "what is the capital of Minnesota?",
+        "what is the capital of Kentucky?"
+    ]
+
+    var answersArray = [
+        [
+            "joliet", "rockford", "springfield", "chicago"
+        ],
+        [
+            "detroit", "lansing", "flint", "kalamazoo"
+        ],
+        [
+            "indianapolis", "gary", "bloomington", "south Bend"
+        ],
+        [
+            "Duluth", "minnesota city", "minneapolis", "saint paul"
+        ],
+        [
+            "frankfort", "lexington", "louisville", "owensboro"
+        ]
+    ];
+
+    var CorrectAnswers = ["C. springfield", "B. lansing", "A. indianapolis", "C. minneapolis", "A. frankfort"]
 
 
 
@@ -36,72 +65,65 @@ $(document).ready(function () {
 
     starGame();
 
+    function noTime() {
+        unansweredGuesses++;
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
+        $(".container").append("<p class='answerSize'>The correct answer was, " + correctAnswers[questionCounter] + "</p>");
+        setTimeout(transitionTime, 4000);
+    }
+
+    function renderRight() {
+        correctGuesses++;
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
+        $(".container").append("<p>" + correctAnswers[questionCounter] + "was the right response!!</p>");
+        transitionTime();
+        setTimeout(transitionTime, 4000);
+    }
+
+    function renderWrong() {
+        wrongGuesses--;
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
+        $(".container").append("<p>Wrong answer :(" + correctAnswers[questionCounter] + " was the right response</p>");
+        transitionTime();
+        setTimeout(transitionTime, 4000);
+
+    }
+
     function renderHtml() {
 
-        for (var i = 0; i < questions.length; i++) {
-
-            $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>")
-            $(".container").append("<p class='questionSize'> " + questions[i].question + "</p>");
-            $(".container").append("<p class='answerSize answer1'>A: " + questions[i].choice1 + "</p>");
-            $(".container").append("<p class='answerSize answer2'>B: " + questions[i].choice2 + "</p>");
-            $(".container").append("<p class='answerSize answer3'>C: " + questions[i].choice3 + "</p>");
-            $(".container").append("<p class='answerSize answer4'>D: " + questions[i].choice4 + "</p>");
-            setTimeout(transitionTime, 4000);
-
-            console.log(questions);
-            console.log(questions[i].choice1);
-            console.log(questions[i].choice2);
-            console.log(questions[i].choice3);
-            console.log(questions[i].choice4);
-        }
-        $("#startBtn").on("click", function () {
-            renderHtml();
-            timer();
-        });
-
-        $(".answer1").on("click", function () {
-
-            if (questions[i].choice1 === questions.answer) {
-                renderRight();
-            }
-            else {
-                renderWrong();
-            }
-
-        });
-
-        $(".answer2").on("click", function () {
-            selectedAnswer = $(this).text();
-            if (selectedAnswer === questions[i].answer) {
-                renderRight();
-            }
-            else {
-                renderWrong();
-            }
-
-        });
-        $(".restartBtn").on("click", function () {
-            renderHtml();
-            timer();
-        });
-
-
-
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>")
+        $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
+        $(".container").append("<p class='answerSize answer1'>A: " + answersArray[questionCounter][0] + "</p>");
+        $(".container").append("<p class='answerSize answer2'>B: " + answersArray[questionCounter][1] + "</p>");
+        $(".container").append("<p class='answerSize answer3'>C: " + answersArray[questionCounter][2] + "</p>");
+        $(".container").append("<p class='answerSize answer4'>D: " + answersArray[questionCounter][3] + "</p>");
+        setTimeout(transitionTime, 4000);
 
 
     }
 
+    function transitionTime() {
+        if (questionCounter < 4) {
+            questionCounter++;
+            renderHtml();
+            counter = 10;
+            timer();
+        }
+        else {
+            clearInterval(clock);
+            resultScreen();
+        }
+    }
+
     function timer() {
         clock = setInterval(decrement, 1000);
-        counter--;
-
-
+    
         function decrement() {
 
             if (counter > 0) {
                 counter--;
             }
-            if (counter === 0) {
+            if (counter === 8) {
                 clearInterval(clock);
                 noTime();
             }
@@ -110,49 +132,17 @@ $(document).ready(function () {
 
     }
 
-    function noTime() {
-        unasnsweredGuesses++;
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>");
-        $(".container").append("<p class='answerSize'>The correct answer was, " + questions[i].answer + "</p>");
-        setTimeout(transitionTime, 4000);
-    }
+    
 
-    function renderRight() {
-        correctGuesses++;
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>");
-        $(".container").append("<p>" + questions[i].answer + "was the right response!!</p>");
-        transitionTime();
-        setTimeout(transitionTime, 4000);
-    }
-
-    function renderWrong() {
-        wrongGuesses--;
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>");
-        $(".container").append("<p>Wrong answer :(" + questions[i].answer + " was the right response</p>");
-        transitionTime();
-        setTimeout(transitionTime, 4000);
-
-    }
-
-    function transitionTime() {
-        if (questionCounter < 7) {
-            questionCounter++;
-            renderHtml();
-            counter = 10;
-            timer();
-        }
-        else {
-            resultScreen();
-        }
-    }
+   
 
     function resultScreen() {
         clearInterval(clock);
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>");
-        $(".container").append("You finished the game!");
-        $(".container").append("Correct Answers: " + correctGuesses);
-        $(".container").append("Wrong Answers: " + wrongGuesses);
-        $(".container").append("Unanswered Questions: " + unasnsweredGuesses);
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
+        $(".container").append("<p>You finished the game!");
+        $(".container").append("<p>Correct Answers: " + correctGuesses + "</p>");
+        $(".container").append("<p>Wrong Answers: " + wrongGuesses + "</p>");
+        $(".container").append("<p>Unanswered Questions: " + unansweredGuesses + "</p>");
         $(".container").append("<p><button id='restartBtn'>restart?</button></p>");
     }
 
@@ -160,7 +150,7 @@ $(document).ready(function () {
         counter = 10;
         correctGuesses = 0;
         wrongGuesses = 0;
-        unasnsweredGuesses = 0;
+        unansweredGuesses = 0;
         questionCounter = 0;
         renderHtml();
         timer();
@@ -174,21 +164,52 @@ $(document).ready(function () {
         timer();
     });
 
-    $(".answer").on("click", function () {
-        selectedAnswer = $(this).text();
-        if (selectedAnswer === questions[i].answer) {
+    $(".answer1").click(function () {
+        console.log("test")
+        if (answersArray[questionCounter][0] === correctAnswer[questionCounter]) {
             renderRight();
         }
         else {
             renderWrong();
         }
+    });
 
+    $(".answer2").click(function () {        
+        if (answersArray[questionCounter][1] === correctAnswer[questionCounter]) {
+            
+            renderRight();
+        }
+        else {
+            renderWrong();
+        }
+    });
+
+    $(".answer3").click(function () {
+        
+        if (answersArray[questionCounter][2] === correctAnswer[questionCounter]) {
+            
+            renderRight();
+        }
+        else {
+            renderWrong();
+        }
+    });
+
+    $(".answer4").click(function () {
+        
+        if (answersArray[questionCounter][3] === correctAnswer[questionCounter]) {
+            renderRight();
+        }
+        else {
+            renderWrong();
+        }
     });
 
     $(".restartBtn").on("click", function () {
-        renderHtml();
-        timer();
+        reset();
     });
+
+    console.log(questionsArray[questionCounter]);
 
 
     // on click, start game
