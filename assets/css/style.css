@@ -1,0 +1,47 @@
+body {
+    background-color: blue;
+}
+
+.container {
+    background-color: green;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 500px;
+    width: 1000px;
+    margin-left: -400px;
+    margin-top: -250px;    
+}
+
+#startBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    width: 50px;
+    margin-left: -250px;
+    margin-top: -250px; 
+}
+
+.timer {
+    text-align: center;
+    font-size: 50px;
+}
+
+.questionSize {
+    font-size: 70px;
+}
+
+.answerSize {
+    font-size: 40px;
+}
+
+.answer1, .answer2, .answer3 ,.answer4 {
+    padding-top: 7px;
+    height: 45px;
+    color: black;
+    padding-left: 14px;
+    background-color: white;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
