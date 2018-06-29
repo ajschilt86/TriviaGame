@@ -1,6 +1,12 @@
 body {
-    background-image: url(../images/usa.png); 
+    /* background-image: url(../images/usa.png); 
     background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: blue;
+}
+
+.background2 {
+    background-image: url(../images/usa.png);
     background-size: cover;
 }
 
@@ -9,6 +15,7 @@ body {
     font-family: 'Concert One', cursive;
     text-align: center;
     margin-top: 20px;
+    color: white;
 }
 
 .container {

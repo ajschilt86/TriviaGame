@@ -35,6 +35,7 @@ $(document).ready(function () {
 
     function starGame() {
         $(".container").html("<p><button id='startBtn'>Click to Start the Trivia Game!</button></p>");
+        $(".container").addClass("background2");
     }
     starGame();
     ///// Button Listener/////
@@ -88,6 +89,7 @@ $(document).ready(function () {
     }
     /////questions/////
     function renderHtml() {
+        $(".container").removeClass("background2");
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>15</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][0] + "</p>");
