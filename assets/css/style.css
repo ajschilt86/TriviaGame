@@ -43,6 +43,10 @@ body {
     color: red;
 }
 
+.eightLeft {
+    color: orange;
+}
+
 .questionSize {
     font-size: 70px;
     text-align: center;
@@ -71,14 +75,20 @@ body {
 
 .finishedSize {
     font-size: 40px;
+    text-align: center;
+    margin-top: 27px;
 }
 
 .resultsHead {
     font-size: 60px;
+    position: absolute;
+    top: 81%;
+    left: 20%;
 }
 
-.resultsBtn {
-    text-align: center;
+.restartBtn {
+    margin-top: 86px;
+    text-align: center;    
 }
 
 .rightPic, .wrongPic, .noTimePic {
@@ -94,5 +104,4 @@ body {
     top: 85%;
     left: 20%;
     font-size: 40px;
-    text-align: center;
 }

@@ -133,7 +133,7 @@ $(document).ready(function () {
         $(".container").append("<p class='finishedSize'>Correct Answers: " + correctGuesses + "</p>");
         $(".container").append("<p class='finishedSize'>Wrong Answers: " + wrongGuesses + "</p>");
         $(".container").append("<p class='finishedSize'>Unanswered Questions: " + unansweredGuesses + "</p>");
-        $(".container").append("<p class='resultsBtn'><button id='restartBtn'>Click to Play Again!</button></p>");
+        $(".container").append("<p class='restartBtn'><button id='restartBtn'>Click to Play Again!</button></p>");
     }
     /////resets everything/////
     function reset() {
