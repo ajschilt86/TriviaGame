@@ -1,12 +1,12 @@
 body {
-    /* background-image: url(../images/usa.png); 
+   /* background-image: url(../images/usa.png); 
     background-repeat: no-repeat;
-    background-size: cover; */
-    background-color: blue;
+    background-size: cover;  */
+    background-color: rgb(70, 8, 185);
 }
 
 .background2 {
-    background-image: url(../images/usa.png);
+    background-image: url(../images/flag1.jpeg);
     background-size: cover;
 }
 
@@ -25,7 +25,7 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    height: 500px;
+    height: 560px;
     width: 1000px;
     margin-left: -500px;
     margin-top: -250px;    
