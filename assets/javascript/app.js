@@ -63,7 +63,7 @@ $(document).ready(function () {
     function noTime() {
         unansweredGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></span></p>");
-        $(".container").append("<p class='answerSize'>The correct answer was, " + correctAnswers[questionCounter] + "</p>");
+        $(".container").append("<p class='rightWrong'>The correct answer was " + correctAnswers[questionCounter] + "</p>");
         $(".container").append("<img class='noTimePic' src='assets/images/time.jpg'>");
         setTimeout(transitionTime, 3000);
     }
@@ -71,7 +71,7 @@ $(document).ready(function () {
     function renderRight() {
         correctGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p class='answerSize'>" + correctAnswers[questionCounter] + " was the right response!!</p>");
+        $(".container").append("<p class='rightWrong'>" + correctAnswers[questionCounter] + " was the right answer!!</p>");
         $(".container").append("<img class='rightPic' src='assets/images/right.png'>");
         //transitionTime();
         setTimeout(transitionTime, 3000);
@@ -80,7 +80,7 @@ $(document).ready(function () {
     function renderWrong() {
         wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p class='answerSize'>Wrong answer :( " + correctAnswers[questionCounter] + " was the right response</p>");
+        $(".container").append("<p class='rightWrong'>The correct answer was " + correctAnswers[questionCounter] + "</p>");
         $(".container").append("<img class='rightPic' src='assets/images/wrong.png'>");
         //transitionTime();
         setTimeout(transitionTime, 3000);
