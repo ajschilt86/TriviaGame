@@ -1,25 +1,34 @@
 body {
-    background-color: blue;
+    background-image: url(../images/flag.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    font-size: 120px;
+    font-family: 'Concert One', cursive;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .container {
-    background-color: green;
+    background-color: blue;
     position: fixed;
     top: 50%;
     left: 50%;
     height: 500px;
     width: 1000px;
-    margin-left: -400px;
+    margin-left: -500px;
     margin-top: -250px;    
 }
 
 #startBtn {
     position: absolute;
-    top: 50%;
+    top: 93%;
     left: 50%;
     height: 50px;
-    width: 50px;
-    margin-left: -250px;
+    width: 200px;
+    margin-left: -100px;
     margin-top: -250px; 
 }
 

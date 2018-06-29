@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var counter = 10;
+    var counter = 5;
     var correctGuesses = 0;
     var wrongGuesses = 0;
     var unansweredGuesses = 0;
@@ -37,26 +37,16 @@ $(document).ready(function () {
         "what is the capital of Kentucky?"
     ];
     var answersArray = [
-        [
-            "joliet", "rockford", "springfield", "chicago"
-        ],
-        [
-            "detroit", "lansing", "flint", "kalamazoo"
-        ],
-        [
-            "indianapolis", "gary", "bloomington", "south Bend"
-        ],
-        [
-            "Duluth", "minnesota city", "minneapolis", "saint paul"
-        ],
-        [
-            "frankfort", "lexington", "louisville", "owensboro"
-        ]
+        ["Joliet", "Rockford", "Springfield", "Chicago"],
+        ["Detroit", "Lansing", "Flint", "Kalamazoo"],
+        ["Indianapolis", "Gary", "Bloomington", "South Bend"],
+        ["Duluth", "Minnesota city", "Minneapolis", "Saint Paul"],
+        ["Frankfort", "Lexington", "Louisville", "Owensboro"]
     ];
-    var correctAnswers = ["C. springfield", "B. lansing", "A. indianapolis", "C. minneapolis", "A. frankfort"];
+    var correctAnswers = ["C. Springfield", "B. Lansing", "A. Indianapolis", "C. Minneapolis", "A. Frankfort"];
 
     function starGame() {
-        $(".container").html("<p><button id='startBtn'>Start</button></p>");
+        $(".container").html("<p><button id='startBtn'>Click to Start the Trivia Game!</button></p>");
     }
 
     starGame();
@@ -67,9 +57,10 @@ $(document).ready(function () {
         timer();
     });
 
-    $(".answer").on("click", function (e) {
-        
-        if (e.mousedown === correctAnswers[questionCounter]) {
+    $("body").on("click", ".answer", function (event) {
+
+        selectedAnswer = $(this).text();
+        if (selectedAnswer === correctAnswers[questionCounter]) {
             clearInterval(clock);
             renderRight();
         }
@@ -79,7 +70,6 @@ $(document).ready(function () {
         }
     });
 
-    
     //////////////
 
     $(document).keydown(function (e) {
@@ -138,18 +128,12 @@ $(document).ready(function () {
     });
 
     console.log(questionsArray[questionCounter]);
+    console.log(answersArray[questionCounter][0]);
+    console.log(answersArray[questionCounter][1]);
+    console.log(answersArray[questionCounter][2]);
+    console.log(answersArray[questionCounter][3]);
+    console.log(correctAnswers[questionCounter]);
 
-    function transitionTime() {
-        if (questionCounter < 4) {
-            questionCounter++;
-            renderHtml();
-            counter = 10;
-            timer();
-        }
-        else {
-            resultScreen();
-        }
-    }
 
     function noTime() {
         unansweredGuesses++;
@@ -167,7 +151,7 @@ $(document).ready(function () {
     }
 
     function renderWrong() {
-        wrongGuesses--;
+        wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p>Wrong answer :(" + correctAnswers[questionCounter] + " was the right response</p>");
         transitionTime();
@@ -176,8 +160,7 @@ $(document).ready(function () {
     }
 
     function renderHtml() {
-
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>")
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>5</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
         $(".container").append("<p class='answerSize answer'>A: " + answersArray[questionCounter][0] + "</p>");
         $(".container").append("<p class='answerSize answer'>B: " + answersArray[questionCounter][1] + "</p>");
@@ -187,33 +170,45 @@ $(document).ready(function () {
 
     }
 
+    function transitionTime() {
+        if (questionCounter < 4) {
+            questionCounter++;
+            renderHtml();
+            counter = 5;
+            timer();
+        }
+        else {
+            results();
+        }
+    }
+
     function timer() {
-        clock = setInterval(decrement, 1000);
-        function decrement() {
-            if (counter === 7) {
-                clearInterval(clock);
-                noTime();
-            }
+        clock = setInterval(thirty, 1000);
+        function thirty() {
             if (counter > 0) {
                 counter--;
+            }
+            if (counter === 0) {
+                clearInterval(clock);
+                noTime();
             }
             $(".timeLeft").html(counter);
         }
 
     }
 
-    function resultScreen() {
+    function results() {
         clearInterval(clock);
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p>You finished the game!");
         $(".container").append("<p>Correct Answers: " + correctGuesses + "</p>");
         $(".container").append("<p>Wrong Answers: " + wrongGuesses + "</p>");
         $(".container").append("<p>Unanswered Questions: " + unansweredGuesses + "</p>");
-        $(".container").append("<p><button id='restartBtn'>restart?</button></p>");
+        $(".container").append("<p><button id='restartBtn'>Restart?</button></p>");
     }
 
     function reset() {
-        counter = 10;
+        counter = 5;
         correctGuesses = 0;
         wrongGuesses = 0;
         unansweredGuesses = 0;
