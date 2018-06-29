@@ -6,6 +6,8 @@ $(document).ready(function () {
     var unansweredGuesses = 0;
     var selectedAnswer = 0;
     var questionCounter = 0;
+    var victoryCondition = 1;
+    var clock;
 
 
     /*var questions = [
@@ -27,15 +29,13 @@ $(document).ready(function () {
         }
     ]
 */
-
     var questionsArray = [
         "what is the capital of Illinois?",
         "what is the capital of Michigan?",
         "what is the capital of indiana?",
         "what is the capital of Minnesota?",
         "what is the capital of Kentucky?"
-    ]
-
+    ];
     var answersArray = [
         [
             "joliet", "rockford", "springfield", "chicago"
@@ -53,17 +53,103 @@ $(document).ready(function () {
             "frankfort", "lexington", "louisville", "owensboro"
         ]
     ];
-
-    var CorrectAnswers = ["C. springfield", "B. lansing", "A. indianapolis", "C. minneapolis", "A. frankfort"]
-
-
+    var correctAnswers = ["C. springfield", "B. lansing", "A. indianapolis", "C. minneapolis", "A. frankfort"];
 
     function starGame() {
         $(".container").html("<p><button id='startBtn'>Start</button></p>");
-
     }
 
     starGame();
+
+    ///// Button Listener/////
+    $("#startBtn").on("click", function () {
+        renderHtml();
+        timer();
+    });
+
+    $(".answer").on("click", function (e) {
+        
+        if (e.mousedown === correctAnswers[questionCounter]) {
+            clearInterval(clock);
+            renderRight();
+        }
+        else {
+            clearInterval(clock);
+            renderWrong();
+        }
+    });
+
+    
+    //////////////
+
+    $(document).keydown(function (e) {
+        var key_one = 49;
+        var key_two = 50;
+        var key_three = 51;
+        var key_four = 52;
+
+        if (e.keyCode == key_one) {
+            if (e.keycode === correctAnswers[questionCounter]) {
+                clearInterval(clock);
+                renderRight();
+            }
+            else {
+                clearInterval(clock);
+                renderWrong();
+            }
+        }
+        if (e.keyCode == key_two) {
+            if (e.keycode === correctAnswers[questionCounter]) {
+                clearInterval(clock);
+                renderRight();
+            }
+            else {
+                clearInterval(clock);
+                renderWrong();
+            }
+        }
+        if (e.keyCode == key_three) {
+            if (e.keycode === correctAnswers[questionCounter]) {
+                clearInterval(clock);
+                renderRight();
+            }
+            else {
+                clearInterval(clock);
+                renderWrong();
+            }
+        }
+        if (e.keyCode == key_four) {
+            if (e.keycode === correctAnswers[questionCounter]) {
+                clearInterval(clock);
+                renderRight();
+            }
+            else {
+                clearInterval(clock);
+                renderWrong();
+            }
+        }
+
+    });
+
+    /////////////
+
+    $("#restartBtn").on("click", function () {
+        reset();
+    });
+
+    console.log(questionsArray[questionCounter]);
+
+    function transitionTime() {
+        if (questionCounter < 4) {
+            questionCounter++;
+            renderHtml();
+            counter = 10;
+            timer();
+        }
+        else {
+            resultScreen();
+        }
+    }
 
     function noTime() {
         unansweredGuesses++;
@@ -93,48 +179,28 @@ $(document).ready(function () {
 
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
-        $(".container").append("<p class='answerSize answer1'>A: " + answersArray[questionCounter][0] + "</p>");
-        $(".container").append("<p class='answerSize answer2'>B: " + answersArray[questionCounter][1] + "</p>");
-        $(".container").append("<p class='answerSize answer3'>C: " + answersArray[questionCounter][2] + "</p>");
-        $(".container").append("<p class='answerSize answer4'>D: " + answersArray[questionCounter][3] + "</p>");
+        $(".container").append("<p class='answerSize answer'>A: " + answersArray[questionCounter][0] + "</p>");
+        $(".container").append("<p class='answerSize answer'>B: " + answersArray[questionCounter][1] + "</p>");
+        $(".container").append("<p class='answerSize answer'>C: " + answersArray[questionCounter][2] + "</p>");
+        $(".container").append("<p class='answerSize answer'>D: " + answersArray[questionCounter][3] + "</p>");
         setTimeout(transitionTime, 4000);
 
-
-    }
-
-    function transitionTime() {
-        if (questionCounter < 4) {
-            questionCounter++;
-            renderHtml();
-            counter = 10;
-            timer();
-        }
-        else {
-            clearInterval(clock);
-            resultScreen();
-        }
     }
 
     function timer() {
         clock = setInterval(decrement, 1000);
-    
         function decrement() {
-
-            if (counter > 0) {
-                counter--;
-            }
-            if (counter === 8) {
+            if (counter === 7) {
                 clearInterval(clock);
                 noTime();
+            }
+            if (counter > 0) {
+                counter--;
             }
             $(".timeLeft").html(counter);
         }
 
     }
-
-    
-
-   
 
     function resultScreen() {
         clearInterval(clock);
@@ -158,58 +224,7 @@ $(document).ready(function () {
 
 
 
-    ///// Button Listener/////
-    $("#startBtn").on("click", function () {
-        renderHtml();
-        timer();
-    });
 
-    $(".answer1").click(function () {
-        console.log("test")
-        if (answersArray[questionCounter][0] === correctAnswer[questionCounter]) {
-            renderRight();
-        }
-        else {
-            renderWrong();
-        }
-    });
-
-    $(".answer2").click(function () {        
-        if (answersArray[questionCounter][1] === correctAnswer[questionCounter]) {
-            
-            renderRight();
-        }
-        else {
-            renderWrong();
-        }
-    });
-
-    $(".answer3").click(function () {
-        
-        if (answersArray[questionCounter][2] === correctAnswer[questionCounter]) {
-            
-            renderRight();
-        }
-        else {
-            renderWrong();
-        }
-    });
-
-    $(".answer4").click(function () {
-        
-        if (answersArray[questionCounter][3] === correctAnswer[questionCounter]) {
-            renderRight();
-        }
-        else {
-            renderWrong();
-        }
-    });
-
-    $(".restartBtn").on("click", function () {
-        reset();
-    });
-
-    console.log(questionsArray[questionCounter]);
 
 
     // on click, start game

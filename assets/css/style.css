@@ -36,7 +36,7 @@ body {
     font-size: 40px;
 }
 
-.answer1, .answer2, .answer3 ,.answer4 {
+.answer {
     padding-top: 7px;
     height: 45px;
     color: black;
