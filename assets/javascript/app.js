@@ -1,4 +1,4 @@
-$(document).ready(function () {
+
 
     var counter = 5;
     var correctGuesses = 0;
@@ -58,7 +58,7 @@ $(document).ready(function () {
     });
 
     $("body").on("click", ".answer", function (event) {
-
+        console.log(this);
         selectedAnswer = $(this).text();
         if (selectedAnswer === correctAnswers[questionCounter]) {
             clearInterval(clock);
@@ -146,15 +146,15 @@ $(document).ready(function () {
         correctGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p>" + correctAnswers[questionCounter] + "was the right response!!</p>");
-        transitionTime();
+        //transitionTime();
         setTimeout(transitionTime, 4000);
     }
 
     function renderWrong() {
         wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p>Wrong answer :(" + correctAnswers[questionCounter] + " was the right response</p>");
-        transitionTime();
+        $(".container").append("<p class='answerSize'>Wrong answer :(" + correctAnswers[questionCounter] + " was the right response</p>");
+        //transitionTime();
         setTimeout(transitionTime, 4000);
 
     }
@@ -166,7 +166,6 @@ $(document).ready(function () {
         $(".container").append("<p class='answerSize answer'>B: " + answersArray[questionCounter][1] + "</p>");
         $(".container").append("<p class='answerSize answer'>C: " + answersArray[questionCounter][2] + "</p>");
         $(".container").append("<p class='answerSize answer'>D: " + answersArray[questionCounter][3] + "</p>");
-        setTimeout(transitionTime, 4000);
 
     }
 
@@ -183,8 +182,8 @@ $(document).ready(function () {
     }
 
     function timer() {
-        clock = setInterval(thirty, 1000);
-        function thirty() {
+        clock = setInterval(decrement, 1000);
+        function decrement() {
             if (counter > 0) {
                 counter--;
             }
@@ -232,4 +231,4 @@ $(document).ready(function () {
     //after all the questions, show correct/incorrect/unasnswered
     //star over button, does not reload page....goes straight to first question
 
-});
+
