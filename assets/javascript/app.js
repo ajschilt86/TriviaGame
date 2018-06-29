@@ -43,7 +43,7 @@
         ["Duluth", "Minnesota city", "Minneapolis", "Saint Paul"],
         ["Frankfort", "Lexington", "Louisville", "Owensboro"]
     ];
-    var correctAnswers = ["C. Springfield", "B. Lansing", "A. Indianapolis", "C. Minneapolis", "A. Frankfort"];
+    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Minneapolis", "Frankfort"];
 
     function starGame() {
         $(".container").html("<p><button id='startBtn'>Click to Start the Trivia Game!</button></p>");
@@ -145,7 +145,7 @@
     function renderRight() {
         correctGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p>" + correctAnswers[questionCounter] + "was the right response!!</p>");
+        $(".container").append("<p answerSize>" + correctAnswers[questionCounter] + "was the right response!!</p>");
         //transitionTime();
         setTimeout(transitionTime, 4000);
     }
@@ -162,10 +162,10 @@
     function renderHtml() {
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>5</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
-        $(".container").append("<p class='answerSize answer'>A: " + answersArray[questionCounter][0] + "</p>");
-        $(".container").append("<p class='answerSize answer'>B: " + answersArray[questionCounter][1] + "</p>");
-        $(".container").append("<p class='answerSize answer'>C: " + answersArray[questionCounter][2] + "</p>");
-        $(".container").append("<p class='answerSize answer'>D: " + answersArray[questionCounter][3] + "</p>");
+        $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][0] + "</p>");
+        $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][1] + "</p>");
+        $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][2] + "</p>");
+        $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][3] + "</p>");
 
     }
 
