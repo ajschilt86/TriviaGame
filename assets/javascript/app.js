@@ -6,19 +6,18 @@ $(document).ready(function () {
     var unansweredGuesses = 0;
     var selectedAnswer = 0;
     var questionCounter = 0;
-    var victoryCondition = 1;
     var clock;
     var questionsArray = [
-        "what is the capital of Illinois?",
-        "what is the capital of Michigan?",
-        "what is the capital of indiana?",
-        "what is the capital of Minnesota?",
-        "what is the capital of Kentucky?",
-        "what is the capital of Missouri?",
-        "what is the capital of Maryland?",
-        "what is the capital of South Dakota?",
-        "what is the capital of Alabama?",
-        "what is the capital of Kansas?"
+        "What is the capital of Illinois?",
+        "What is the capital of Michigan?",
+        "What is the capital of indiana?",
+        "What is the capital of Minnesota?",
+        "What is the capital of Kentucky?",
+        "What is the capital of Missouri?",
+        "What is the capital of Maryland?",
+        "What is the capital of South Dakota?",
+        "What is the capital of Alabama?",
+        "What is the capital of Kansas?"
     ];
     var answersArray = [
         ["Joliet", "Rockford", "Springfield", "Chicago"],
@@ -65,6 +64,7 @@ $(document).ready(function () {
         unansweredGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></span></p>");
         $(".container").append("<p class='answerSize'>The correct answer was, " + correctAnswers[questionCounter] + "</p>");
+        $(".container").append("<img class='noTimePic' src='assets/images/time.jpg'>");
         setTimeout(transitionTime, 3000);
     }
     /////right answer screen/////
@@ -72,6 +72,7 @@ $(document).ready(function () {
         correctGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>" + correctAnswers[questionCounter] + " was the right response!!</p>");
+        $(".container").append("<img class='rightPic' src='assets/images/right.png'>");
         //transitionTime();
         setTimeout(transitionTime, 3000);
     }
@@ -80,6 +81,7 @@ $(document).ready(function () {
         wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>Wrong answer :( " + correctAnswers[questionCounter] + " was the right response</p>");
+        $(".container").append("<img class='rightPic' src='assets/images/wrong.png'>");
         //transitionTime();
         setTimeout(transitionTime, 3000);
 
