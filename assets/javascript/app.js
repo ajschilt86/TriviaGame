@@ -34,16 +34,18 @@
         "what is the capital of Michigan?",
         "what is the capital of indiana?",
         "what is the capital of Minnesota?",
-        "what is the capital of Kentucky?"
+        "what is the capital of Kentucky?",
+        "what is the capital of Missouri?"
     ];
     var answersArray = [
         ["Joliet", "Rockford", "Springfield", "Chicago"],
         ["Detroit", "Lansing", "Flint", "Kalamazoo"],
         ["Indianapolis", "Gary", "Bloomington", "South Bend"],
         ["Duluth", "Minnesota city", "Minneapolis", "Saint Paul"],
-        ["Frankfort", "Lexington", "Louisville", "Owensboro"]
+        ["Frankfort", "Lexington", "Louisville", "Owensboro"],
+        ["Saint Louis", "Jefferson City", "Columbia", "Kansas City"]
     ];
-    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Saint Paul", "Frankfort"];
+    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Saint Paul", "Frankfort", "Jefferson City"];
 
     function starGame() {
         $(".container").html("<p><button id='startBtn'>Click to Start the Trivia Game!</button></p>");
@@ -132,7 +134,7 @@
         unansweredGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>The correct answer was, " + correctAnswers[questionCounter] + "</p>");
-        setTimeout(transitionTime, 2000);
+        setTimeout(transitionTime, 1000);
     }
 
     function renderRight() {
@@ -140,15 +142,15 @@
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>" + correctAnswers[questionCounter] + " was the right response!!</p>");
         //transitionTime();
-        setTimeout(transitionTime, 2000);
+        setTimeout(transitionTime, 1000);
     }
 
     function renderWrong() {
         wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p class='answerSize'>Wrong answer :(" + correctAnswers[questionCounter] + " was the right response</p>");
+        $(".container").append("<p class='answerSize'>Wrong answer :( " + correctAnswers[questionCounter] + " was the right response</p>");
         //transitionTime();
-        setTimeout(transitionTime, 2000);
+        setTimeout(transitionTime, 1000);
 
     }
 
@@ -163,7 +165,7 @@
     }
 
     function transitionTime() {
-        if (questionCounter < 4) {
+        if (questionCounter < 5) {
             questionCounter++;
             renderHtml();
             counter = 10;
@@ -192,11 +194,11 @@
     function results() {
         clearInterval(clock);
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p class='answerSize'>You finished the game!");
-        $(".container").append("<p class='answerSize'>Correct Answers: " + correctGuesses + "</p>");
-        $(".container").append("<p class='answerSize'>Wrong Answers: " + wrongGuesses + "</p>");
-        $(".container").append("<p class='answerSize'>Unanswered Questions: " + unansweredGuesses + "</p>");
-        $(".container").append("<p class='answerSize'><button id='restartBtn'>Restart?</button></p>");
+        $(".container").append("<p class='resultsHead'>You finished the game!");
+        $(".container").append("<p class='finishedSize'>Correct Answers: " + correctGuesses + "</p>");
+        $(".container").append("<p class='finishedSize'>Wrong Answers: " + wrongGuesses + "</p>");
+        $(".container").append("<p class='finishedSize'>Unanswered Questions: " + unansweredGuesses + "</p>");
+        $(".container").append("<p class='finishedSize'><button id='restartBtn'>Restart?</button></p>");
     }
 
     function reset() {

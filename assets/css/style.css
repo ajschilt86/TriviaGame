@@ -54,3 +54,16 @@ body {
     border-radius: 4px;
     margin: 10px 0;
   }
+
+.answer:hover {
+    background: green;
+  }
+  
+
+.finishedSize {
+    font-size: 40px;
+}
+
+.resultsHead {
+    font-size: 60px;
+}
