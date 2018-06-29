@@ -37,6 +37,10 @@ body {
     font-size: 50px;
 }
 
+.fiveLeft {
+    color: red;
+}
+
 .questionSize {
     font-size: 70px;
 }
@@ -58,7 +62,6 @@ body {
 .answer:hover {
     background: green;
   }
-  
 
 .finishedSize {
     font-size: 40px;
@@ -66,4 +69,8 @@ body {
 
 .resultsHead {
     font-size: 60px;
+}
+
+.resultsBtn {
+    text-align: center;
 }

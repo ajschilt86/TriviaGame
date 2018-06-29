@@ -1,6 +1,6 @@
+$(document).ready(function () {
 
-
-    var counter = 10;
+    var counter = 15;
     var correctGuesses = 0;
     var wrongGuesses = 0;
     var unansweredGuesses = 0;
@@ -8,34 +8,17 @@
     var questionCounter = 0;
     var victoryCondition = 1;
     var clock;
-
-
-    /*var questions = [
-        {
-            question: "what is the capital of Illinois?",
-            choice1: "joliet",
-            choice2: "rockford",
-            choice3: "springfield",
-            choice4: "chicago",
-            answer: "springfield"
-        },
-        {
-            question: "what is the capital of Michigan?",
-            choice1: "detroit",
-            choice2: "lansing",
-            choice3: "springfield",
-            choice4: "chicago",
-            answer: "lansing"
-        }
-    ]
-*/
     var questionsArray = [
         "what is the capital of Illinois?",
         "what is the capital of Michigan?",
         "what is the capital of indiana?",
         "what is the capital of Minnesota?",
         "what is the capital of Kentucky?",
-        "what is the capital of Missouri?"
+        "what is the capital of Missouri?",
+        "what is the capital of Maryland?",
+        "what is the capital of South Dakota?",
+        "what is the capital of Alabama?",
+        "what is the capital of Kansas?"
     ];
     var answersArray = [
         ["Joliet", "Rockford", "Springfield", "Chicago"],
@@ -43,16 +26,18 @@
         ["Indianapolis", "Gary", "Bloomington", "South Bend"],
         ["Duluth", "Minnesota city", "Minneapolis", "Saint Paul"],
         ["Frankfort", "Lexington", "Louisville", "Owensboro"],
-        ["Saint Louis", "Jefferson City", "Columbia", "Kansas City"]
+        ["Saint Louis", "Jefferson City", "Columbia", "Kansas City"],
+        ["Baltimore", "Germantown", "Annapolis", "Silver Spring"],
+        ["Sioux Falls", "Rapid City", "Watertown", "Pierre"],
+        ["Montgomery", "Birmingham", "Mobile", "Tuscaloosa"],
+        ["Witchita", "Topeka", "Overland Park", "Olathe"]
     ];
-    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Saint Paul", "Frankfort", "Jefferson City"];
+    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Saint Paul", "Frankfort", "Jefferson City", "Annapolis", "Pierre", "Montgomery", "Topeka"];
 
     function starGame() {
         $(".container").html("<p><button id='startBtn'>Click to Start the Trivia Game!</button></p>");
     }
-
     starGame();
-
     ///// Button Listener/////
     $("#startBtn").on("click", function () {
         renderHtml();
@@ -72,90 +57,36 @@
         }
     });
 
-    //////////////
-
-    $(document).keydown(function (e) {
-        var key_one = 49;
-        var key_two = 50;
-        var key_three = 51;
-        var key_four = 52;
-
-        if (e.keyCode == key_one) {
-            if (e.keycode === correctAnswers[questionCounter]) {
-                clearInterval(clock);
-                renderRight();
-            }
-            else {
-                clearInterval(clock);
-                renderWrong();
-            }
-        }
-        if (e.keyCode == key_two) {
-            if (e.keycode === correctAnswers[questionCounter]) {
-                clearInterval(clock);
-                renderRight();
-            }
-            else {
-                clearInterval(clock);
-                renderWrong();
-            }
-        }
-        if (e.keyCode == key_three) {
-            if (e.keycode === correctAnswers[questionCounter]) {
-                clearInterval(clock);
-                renderRight();
-            }
-            else {
-                clearInterval(clock);
-                renderWrong();
-            }
-        }
-        if (e.keyCode == key_four) {
-            if (e.keycode === correctAnswers[questionCounter]) {
-                clearInterval(clock);
-                renderRight();
-            }
-            else {
-                clearInterval(clock);
-                renderWrong();
-            }
-        }
-
-    });
-
-    /////////////
-
     $("#restartBtn").on("click", function () {
         reset();
     });
 
-
     function noTime() {
         unansweredGuesses++;
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></span></p>");
         $(".container").append("<p class='answerSize'>The correct answer was, " + correctAnswers[questionCounter] + "</p>");
-        setTimeout(transitionTime, 1000);
+        setTimeout(transitionTime, 3000);
     }
-
+    /////right answer screen/////
     function renderRight() {
         correctGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>" + correctAnswers[questionCounter] + " was the right response!!</p>");
         //transitionTime();
-        setTimeout(transitionTime, 1000);
+        setTimeout(transitionTime, 3000);
     }
-
+    /////wrong answer screen/////
     function renderWrong() {
         wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>Wrong answer :( " + correctAnswers[questionCounter] + " was the right response</p>");
         //transitionTime();
-        setTimeout(transitionTime, 1000);
+        setTimeout(transitionTime, 3000);
 
     }
-
+    /////questions/////
     function renderHtml() {
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>")
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>15</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][0] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][1] + "</p>");
@@ -163,24 +94,27 @@
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][3] + "</p>");
 
     }
-
+    /////slide timer/////
     function transitionTime() {
-        if (questionCounter < 5) {
+        if (questionCounter < 9) {
             questionCounter++;
             renderHtml();
-            counter = 10;
+            counter = 15;
             timer();
         }
         else {
             results();
         }
     }
-
+    /////Countdown Timer/////
     function timer() {
         clock = setInterval(decrement, 1000);
         function decrement() {
             if (counter > 0) {
                 counter--;
+            }
+            if (counter === 5) {
+                $(".timeLeft").addClass("fiveLeft")
             }
             if (counter === 0) {
                 clearInterval(clock);
@@ -188,9 +122,8 @@
             }
             $(".timeLeft").html(counter);
         }
-
     }
-
+    /////results page/////
     function results() {
         clearInterval(clock);
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
@@ -198,11 +131,11 @@
         $(".container").append("<p class='finishedSize'>Correct Answers: " + correctGuesses + "</p>");
         $(".container").append("<p class='finishedSize'>Wrong Answers: " + wrongGuesses + "</p>");
         $(".container").append("<p class='finishedSize'>Unanswered Questions: " + unansweredGuesses + "</p>");
-        $(".container").append("<p class='finishedSize'><button id='restartBtn'>Restart?</button></p>");
+        $(".container").append("<p class='resultsBtn'><button id='restartBtn'>Click to Play Again!</button></p>");
     }
-
+    /////resets everything/////
     function reset() {
-        counter = 10;
+        counter = 15;
         correctGuesses = 0;
         wrongGuesses = 0;
         unansweredGuesses = 0;
@@ -210,11 +143,6 @@
         renderHtml();
         timer();
     }
-
-
-
-
-
 
     // on click, start game
     //timer starts and question shows up,
@@ -226,4 +154,4 @@
     //after all the questions, show correct/incorrect/unasnswered
     //star over button, does not reload page....goes straight to first question
 
-
+});
