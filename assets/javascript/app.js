@@ -1,6 +1,6 @@
 
 
-    var counter = 5;
+    var counter = 10;
     var correctGuesses = 0;
     var wrongGuesses = 0;
     var unansweredGuesses = 0;
@@ -43,7 +43,7 @@
         ["Duluth", "Minnesota city", "Minneapolis", "Saint Paul"],
         ["Frankfort", "Lexington", "Louisville", "Owensboro"]
     ];
-    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Minneapolis", "Frankfort"];
+    var correctAnswers = ["Springfield", "Lansing", "Indianapolis", "Saint Paul", "Frankfort"];
 
     function starGame() {
         $(".container").html("<p><button id='startBtn'>Click to Start the Trivia Game!</button></p>");
@@ -127,27 +127,20 @@
         reset();
     });
 
-    console.log(questionsArray[questionCounter]);
-    console.log(answersArray[questionCounter][0]);
-    console.log(answersArray[questionCounter][1]);
-    console.log(answersArray[questionCounter][2]);
-    console.log(answersArray[questionCounter][3]);
-    console.log(correctAnswers[questionCounter]);
-
 
     function noTime() {
         unansweredGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>The correct answer was, " + correctAnswers[questionCounter] + "</p>");
-        setTimeout(transitionTime, 4000);
+        setTimeout(transitionTime, 2000);
     }
 
     function renderRight() {
         correctGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p answerSize>" + correctAnswers[questionCounter] + "was the right response!!</p>");
+        $(".container").append("<p class='answerSize'>" + correctAnswers[questionCounter] + " was the right response!!</p>");
         //transitionTime();
-        setTimeout(transitionTime, 4000);
+        setTimeout(transitionTime, 2000);
     }
 
     function renderWrong() {
@@ -155,12 +148,12 @@
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='answerSize'>Wrong answer :(" + correctAnswers[questionCounter] + " was the right response</p>");
         //transitionTime();
-        setTimeout(transitionTime, 4000);
+        setTimeout(transitionTime, 2000);
 
     }
 
     function renderHtml() {
-        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>5</span></p>")
+        $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>10</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][0] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][1] + "</p>");
@@ -173,7 +166,7 @@
         if (questionCounter < 4) {
             questionCounter++;
             renderHtml();
-            counter = 5;
+            counter = 10;
             timer();
         }
         else {
@@ -199,15 +192,15 @@
     function results() {
         clearInterval(clock);
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
-        $(".container").append("<p>You finished the game!");
-        $(".container").append("<p>Correct Answers: " + correctGuesses + "</p>");
-        $(".container").append("<p>Wrong Answers: " + wrongGuesses + "</p>");
-        $(".container").append("<p>Unanswered Questions: " + unansweredGuesses + "</p>");
-        $(".container").append("<p><button id='restartBtn'>Restart?</button></p>");
+        $(".container").append("<p class='answerSize'>You finished the game!");
+        $(".container").append("<p class='answerSize'>Correct Answers: " + correctGuesses + "</p>");
+        $(".container").append("<p class='answerSize'>Wrong Answers: " + wrongGuesses + "</p>");
+        $(".container").append("<p class='answerSize'>Unanswered Questions: " + unansweredGuesses + "</p>");
+        $(".container").append("<p class='answerSize'><button id='restartBtn'>Restart?</button></p>");
     }
 
     function reset() {
-        counter = 5;
+        counter = 10;
         correctGuesses = 0;
         wrongGuesses = 0;
         unansweredGuesses = 0;
