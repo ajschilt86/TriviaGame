@@ -7,7 +7,7 @@ body {
 }
 
 h1 {
-    font-size: 72px;
+    
     
     /*background: -webkit-linear-gradient(red, white, blue);
     -webkit-background-clip: text;
@@ -20,11 +20,11 @@ h1 {
 }
 
 .header {
-    font-size: 120px;
+    font-size: 103px;
     /* font-family: 'Concert One', cursive; */
     font-family: 'Frijole', cursive;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 37px;
     animation-name: header;
     animation-duration: 3s;
     animation-iteration-count: infinite;
