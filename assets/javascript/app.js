@@ -85,7 +85,6 @@ $(document).ready(function () {
         $(".container").append("<img class='rightPic' src='assets/images/wrong.png'>");
         //transitionTime();
         setTimeout(transitionTime, 3000);
-
     }
     /////questions/////
     function renderHtml() {
@@ -96,7 +95,6 @@ $(document).ready(function () {
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][1] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][2] + "</p>");
         $(".container").append("<p class='answerSize answer'>" + answersArray[questionCounter][3] + "</p>");
-
     }
     /////slide timer/////
     function transitionTime() {
@@ -157,5 +155,4 @@ $(document).ready(function () {
     //next question shows up, if the time expires or answer is given
     //after all the questions, show correct/incorrect/unasnswered
     //star over button, does not reload page....goes straight to first question
-
 });
