@@ -10,7 +10,7 @@ $(document).ready(function () {
     var questionsArray = [
         "What is the capital of Illinois?",
         "What is the capital of Michigan?",
-        "What is the capital of indiana?",
+        "What is the capital of Indiana?",
         "What is the capital of Minnesota?",
         "What is the capital of Kentucky?",
         "What is the capital of Missouri?",
@@ -57,7 +57,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#restartBtn").on("click", function () {
+    $("body").on("click", "#restartBtn", function (event) {
         reset();
     });
 
