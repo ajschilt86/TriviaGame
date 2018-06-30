@@ -1,15 +1,17 @@
 body {
-   /* background-image: url(../images/usa.png); 
+    /*background-image: url(../images/bricks.jpg); 
     background-repeat: no-repeat;
-    background-size: cover;  */
-    background-color: rgb(70, 8, 185);
+    background-size: cover; */  
+    /* background: linear-gradient(to left, blue, red, white, red, blue); */
+    background-color: rgb(12, 176, 232);
 }
 
 h1 {
     font-size: 72px;
-    background: -webkit-linear-gradient(red, white, blue);
+    
+    /*background: -webkit-linear-gradient(red, white, blue);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
   }
 
 .background2 {
@@ -19,16 +21,19 @@ h1 {
 
 .header {
     font-size: 120px;
-    font-family: 'Concert One', cursive;
+    /* font-family: 'Concert One', cursive; */
+    font-family: 'Frijole', cursive;
     text-align: center;
     margin-top: 20px;
+    animation-name: header;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
     color: white;
 }
 
 .container {
     background-color: grey;
     border-radius: 44px;
-    opacity: .9;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -53,7 +58,7 @@ h1 {
 }
 
 @keyframes startBtn {
-    0%   {background-color: red;
+    25%   {background-color: red;
           color:blue;}
     50%  {background-color: white;
           color: red;}
