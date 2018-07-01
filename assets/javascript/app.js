@@ -40,7 +40,7 @@ $(document).ready(function () {
     starGame();
     ///// Button Listener/////
     $("#startBtn").on("click", function () {
-        renderHtml();
+        questionPage();
         timer();
     });
 
@@ -87,7 +87,7 @@ $(document).ready(function () {
         setTimeout(transitionTime, 3000);
     }
     /////questions/////
-    function renderHtml() {
+    function questionPage() {
         $(".container").removeClass("background2");
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>15</span></p>")
         $(".container").append("<p class='questionSize'> " + questionsArray[questionCounter] + "</p>");
@@ -100,7 +100,7 @@ $(document).ready(function () {
     function transitionTime() {
         if (questionCounter < 9) {
             questionCounter++;
-            renderHtml();
+            questionPage();
             counter = 15;
             timer();
         }
@@ -142,7 +142,7 @@ $(document).ready(function () {
         wrongGuesses = 0;
         unansweredGuesses = 0;
         questionCounter = 0;
-        renderHtml();
+        questionPage();
         timer();
     }
 
