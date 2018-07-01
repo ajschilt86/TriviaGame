@@ -82,7 +82,7 @@ $(document).ready(function () {
         wrongGuesses++;
         $(".container").html("<p class='timer'>Time Left: <span class='timeLeft'>" + counter + "</span></p>");
         $(".container").append("<p class='rightWrong'>The correct answer was " + correctAnswers[questionCounter] + "</p>");
-        $(".container").append("<img class='rightPic' src='assets/images/wrong.png'>");
+        $(".container").append("<img class='wrongPic' src='assets/images/wrong.png'>");
         //transitionTime();
         setTimeout(transitionTime, 3000);
     }

@@ -6,12 +6,6 @@ body {
     background-color: rgb(12, 176, 232);
 }
 
-h1 {
-    /*background: -webkit-linear-gradient(red, white, blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
-  }
-
 .background2 {
     background-image: url(../images/flag1.jpeg);
     background-size: cover;
@@ -86,8 +80,7 @@ h1 {
 .answerSize {
     font-size: 40px;
     text-align: center;
-    width: 70%;
-    
+    width: 70%;    
 }
 
 .answer {
@@ -98,11 +91,11 @@ h1 {
     background-color: white;
     border-radius: 4px;
     margin: 10px 143px;
-  }
+}
 
 .answer:hover {
     background: rgba(57, 91, 243, 0.904);
-  }
+}
 
 .finishedSize {
     font-size: 40px;
@@ -164,6 +157,6 @@ h1 {
 .rightWrong {
     position: absolute;
     top: 85%;
-    left: 20%;
+    left: 21%;
     font-size: 40px;
 }
