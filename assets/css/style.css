@@ -51,12 +51,16 @@ body {
 }
 
 @keyframes startBtn {
-    25%   {background-color: red;
+    0%  {background-color: red;
           color:blue;}
-    50%  {background-color: white;
+    25%  {background-color: white;
           color: red;}
-    100% {background-color: blue;
+    50% {background-color: blue;
           color: white;}
+    75% {background-color: white;
+          color: red;}
+    100% {background-color: red;
+          color: blue;}
 }
 
 .timer {
@@ -122,12 +126,16 @@ body {
 }
 
 @keyframes restartBtn {
-    25%   {background-color: red;
+    0%  {background-color: red;
           color:blue;}
-    50%  {background-color: white;
+    25%  {background-color: white;
           color: red;}
-    100% {background-color: blue;
+    50% {background-color: blue;
           color: white;}
+    75% {background-color: white;
+          color: red;}
+    100% {background-color: red;
+          color: blue;}
 }
 
 .rightPic {
@@ -166,4 +174,32 @@ body {
     left: 50%;
     top: 90%;
     margin-left: -150px;
+}
+
+@media screen and (max-width: 640px) {
+
+    .container {
+        height: 496px;
+        width: 500px;
+        margin-left: -253px;
+        margin-top: -179px; 
+    }
+
+    .questionSize {
+        font-size: 37px;
+        
+    }
+
+    .answerSize {
+        font-size: 37px;
+        margin: 10px 68px;
+    }
+
+    .rightWrong {
+        top: 79%;        
+    }
+
+    .resultsHead {
+        font-size: 31px;
+    }
 }
